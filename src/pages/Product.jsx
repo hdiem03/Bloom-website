@@ -127,7 +127,6 @@ const Product = () => {
         
       </div>
       {/* Related product */}
-      {/* <RelatedProduct category={productData.category} excludeId={productData.id} /> */}
       <RelatedProduct category={productData.category} />
     </div>
     
