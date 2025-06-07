@@ -1,138 +1,181 @@
-import React, { useContext, useEffect, useState }  from 'react'
-import { assets } from '../assets/assets';
-import RelatedProduct from '../components/RelatedProduct';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
+import { assets } from '../assets/assets';
+import { getProductPrice } from '../utils/utils';
 import Quantity from '../components/Quantity';
+import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const {productId} = useParams();
-  const {products, currency, addToCart,navigate} = useContext(ShopContext);
-  const [productData, setProductData] = useState(null);
-  const [image, setImage] = useState('');
-  const [size, setSize] = useState('');
-  const [quantity, setQuantity] = useState(1);
+  const {products,currency,addToCart,navigate} = useContext(ShopContext);
+  const product = products.find(item => item.id === productId);
+  if (!product) return <div>Sản phẩm không tồn tại.</div>
+  const [color, setColor] = useState(product.color[0]);
+  // const [size,setSize] = useState(product.size[0]);
+const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) || null);
 
-  const fetchProductData = () =>{
-    const product = products.find(item => item.id === productId)
+  const [image, setImage] = useState(product.color[0].image[0]);
+  const [quantity, setQuantity] = useState(1);
+  const {productPrice, isDiscounted} = getProductPrice(product.price,product.bestSeller);
+
+  useEffect(()=>{
     if (product) {
-      setProductData(product);
-      setImage(product.image[0]);
-      setSize(product.size[0]);
-      setQuantity(1);   
+      setColor(product.color[0]);
+      // setSize(product.size[0]);
+      setSize(product.size.find(s => s.quantity > 0) || null);
+
+      setImage(product.color[0].image[0]);
+      setQuantity(1);
       
     }
-  }
-  useEffect(()=>{
-    fetchProductData();
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
 
-  },[productId, products])
-  return productData ? (
+  },[product])
+  return (
     <div>
-      <div className='flex flex-col md:flex-row gap-20 pt-10'>
-        {/* product images */}
-        <div className='flex-1 flex flex-col-reverse gap-3 md:flex-row'>
-            <div className='flex md:flex-col  md:w-[19%] gap-2 md:gap-3'>
-        
-            {
-              productData.image.map(item=>(
-                <img onClick={()=>setImage(item)} src={item} key={item} className='w-[24%] md:w-full cursor-pointer'/>
-              ))
-            }
+      <div className='flex flex-col lg:flex-row gap-20 pt-10'>
+        {/* image */}
+        <div className='flex-1 flex flex-col-reverse lg:flex-row gap-3'>
+          <div className='flex lg:flex-col lg:w-[19%] gap-2 lg:gap-3'>
+            {color.image.map(i => (
+              <img onClick={()=>setImage(i)} src={i} key={i} className='w-[24%] lg:w-full cursor-pointer' />
+            ))}
 
           </div>
-          <div className='md:w-[80%]'>
-            <img className='' src={image} />
-         
+          <div className='lg:w-[80%]'>
+            <div
+              className='relative w-full overflow-hidden'
+              onMouseMove={e => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const img = e.currentTarget.querySelector('img');
+                const x = ((e.clientX - rect.left)/rect.width) * 100;
+                const y = ((e.clientY - rect.top)/ rect.height) * 100;
+                img.style.transformOrigin=`${x}% ${y}%`
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.querySelector('img').style.transformOrigin ='center center'
+              }}
+            >
+              <img src={image} className='transition-transform object-contain hover:scale-150' />
+            </div>
+
           </div>
 
         </div>
-
-        {/* product info */}
+        {/* info */}
         <div className='flex-1'>
-          <h1 className='text-3xl font-semibold'>{productData.name}</h1>
-          <div className='flex items-center gap-4 my-4'>
-            <p className='text-gray-500'>SKU: {productData.sku} </p>
-            <div className='flex items-center gap-1'>
-              <img src={assets.star_icon} className='w-3' />
-              <img src={assets.star_icon} className='w-3' />
-              <img src={assets.star_icon} className='w-3' />
-              <img src={assets.star_icon} className='w-3' />
-              <img src={assets.star_icon} className='w-3' />
-              <p className='pl-2'>(0 đánh giá)</p>
-            </div>
-          </div>
-          <p className='mt-5 text-xl font-semibold'>
-            {productData.price.toLocaleString('vi-VN')}{currency}
-          </p>
-          <p className='mt-5'>Màu sắc: {productData.color} </p>
-          <div className='flex items-center gap-4 my-8'>
-            <p className='mr-8'>Size</p>
-            <div className='flex gap-4'>
-              {
-                productData.size.map(item => (
-                  <button
-                  onClick={()=>setSize(item)}
-                    key={item} className={`border py-1 px-4 ${item === size ? 'border-black text-black' : 'text-gray-500'}`}
-                  >
-                    {item}
-                  </button>
-                ))
-              }
-
-            </div>
+          <p className='font-semibold text-sm lg:text-3xl'>{product.name} </p>
+          <div className='flex items-center my-4'>
+            <p className='text-gray-500 mr-6'>SKU: {product.sku} </p>
+            <img src={assets.star_icon} className='w-4' />
+            <img src={assets.star_icon} className='w-4' />
+            <img src={assets.star_icon} className='w-4' />
+            <img src={assets.star_icon} className='w-4' />
+            <img src={assets.star_icon} className='w-4' />
+            <p className='ml-3'>(0 đánh giá)</p>
 
           </div>
-          <div className='flex items-center gap-4 my-8'>
+          <div className='flex items-end gap-5 my-6'>
+            <p className='text-xl font-semibold'>{productPrice.toLocaleString('vi-VN')}{currency} </p>
+            {isDiscounted && (
+              <>
+                <p className='line-through text-gray-400'>{product.price.toLocaleString('vi-VN')}{currency} </p>
+                <span className='bg-orange-600 text-white text-xs font-bold px-4 py-1 mb-3'>
+                  -50%
+                </span>
+              </>              
+            )}
+          </div>
+          <p>Màu sắc: {color.name} </p>
+          <div className='flex gap-4 my-4'>
+            {product.color.map(c => (
+              <button
+                onClick={()=>{setColor(c), setImage(c.image[0])}}
+                key={c.name}
+                className={`w-6 h-6 rounded-full border ${color.name === c.name ? 'outline outline-1 outline-offset-2' : ''}`}
+                style={{backgroundColor: c.code}}
+              >
+
+              </button>
+            ))}
+
+          </div>
+          <div className='flex items-center gap-5 my-8'>
+            <p>Size</p>
+            {product.size.map(s => (
+              <button
+                onClick={()=> setSize(s)}
+                key={s.name}
+                disabled={s.quantity === 0}
+                className={`relative border py-1 w-[50px] select-none
+                  ${size && size.name === s.name ? 'border-black text-black': 'text-gray-500'}`}
+              >
+                {s.name}
+                {s.quantity === 0 &&(
+                  <div className='absolute top-1/2 left-0 w-full h-[1px] bg-gray-400 -rotate-45'></div>
+                )}
+              </button>
+            ))}
+
+          </div>
+          <div className='flex items-center gap-5'>
             <p>Số lượng</p>
-            <Quantity
-              qty={quantity}
-              setQty={setQuantity}
-            />
-            
+            {/* <Quantity qty={quantity} setQty={setQuantity} /> */}
+            <Quantity qty={quantity} setQty={(newQty => {
+              if (newQty <= size.quantity) {
+                setQuantity(newQty);
+                
+              }
+            })} />
+
           </div>
-          <div className='flex gap-4'>
-            <button onClick={()=>addToCart(productData.id, size,quantity)} className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
+          {/* <div className='flex gap-4 my-8'>
+            <button 
+              onClick={()=>addToCart(product.id,size.name,color.name,quantity)}
+              className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
               THÊM VÀO GIỎ
             </button>
-            <button onClick={()=>{addToCart(productData.id, size, quantity); navigate('/place-order')}}  className='w-48 h-14 text-black border border-black hover:bg-black hover:text-white'>
+            <button 
+              onClick={()=> {addToCart(product.id,size.name,color.name,quantity), navigate('/checkout')}}
+            className='w-48 h-14 px-8 bg-white text-black border border-black hover:bg-black hover:text-white'>
               MUA HÀNG
             </button>
-          
+
+          </div> */}
+          {!size ? (
+            <button 
+              disabled
+              className='my-8 w-48 h-14 px-8 bg-gray-300 text-white'>
+              HẾT HÀNG
+            </button>
+
+          ) :(
+            <div className='flex gap-4 my-8'>
+            <button 
+              onClick={()=>addToCart(product.id,size.name,color.name,quantity)}
+              className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
+              THÊM VÀO GIỎ
+            </button>
+            <button 
+              onClick={()=> {addToCart(product.id,size.name,color.name,quantity), navigate('/checkout')}}
+            className='w-48 h-14 px-8 bg-white text-black border border-black hover:bg-black hover:text-white'>
+              MUA HÀNG
+            </button>
 
           </div>
-          <hr className='my-8'/>
-          <div>
-            <div className='flex border-b '>
-              <button className='flex-1 py-2 text-sm font-semibold text-black border-b-2 border-black'>
-                Giới thiệu
-              </button>
-              <button className='flex-1 py-2 text-sm font-semibold text-gray-500'>
-                Chi tiết sản phẩm
-              </button>
-
-            </div>
-            <div className='py-6 text-sm '>
-              <p className='text-justify'>{productData.description} </p>
-              <p></p>
-              
-            </div>
-
-
-          </div>
+          )}
+          <hr className='mt-8'/>
+          <p className='font-semibold py-6'>CHI TIẾT SẢN PHẨM</p>
+          <p className='text-justify text-sm'>{product.description} </p>
 
         </div>
-        
-        
-      </div>
-      {/* Related product */}
-      <RelatedProduct category={productData.category} />
-    </div>
-    
-  ) : <div className='opacity-0'></div>
-  
 
+      </div>
+      <RelatedProduct category={product.category} excludeId={product.id}/>
+      
+    </div>
+  )
 }
 
 export default Product

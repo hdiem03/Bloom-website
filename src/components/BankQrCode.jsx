@@ -2,12 +2,11 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 
 const BankQrCode = () => {
-  const { getCartAmount, delivery_fee } = useContext(ShopContext);
-  const amount = getCartAmount() + delivery_fee;
+  const { getTotalPayment } = useContext(ShopContext);
 
   const bank = 'VIETCOMBANK';              
   const account = '1051238310';    
-  const qrUrl = `https://img.vietqr.io/image/${bank}-${account}-compact2.png?amount=${amount}`;
+  const qrUrl = `https://img.vietqr.io/image/${bank}-${account}-compact2.png?amount=${getTotalPayment()}`;
 
   return (
     <div className="text-center mt-4">

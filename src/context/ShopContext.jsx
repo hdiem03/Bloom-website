@@ -1,95 +1,93 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { products } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { getProductPrice } from "../utils/utils";
+
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) =>{
-
-    const currency = 'đ';
-    const delivery_fee = 30000;
-
-    const [search, setSearch] = useState('');
-    const [cartItem, setCartItem] = useState(() => {
-        const storedCart = localStorage.getItem('cartItem');
-        if (storedCart) {
-            return JSON.parse(storedCart);
-        }
-        return {};
-    });
-
-    const [showCartSidebar, setShowCartSidebar] = useState(false);
-
-
-
-    const navigate = useNavigate();
-
-    const addToCart = (itemId,size,quantity) =>{
-        const cartData = {...cartItem};
-        if (!cartData[itemId]) {
-            cartData[itemId] = {}
-
-        }
-        if (cartData[itemId][size]){
-            cartData[itemId][size] = cartData[itemId][size] + quantity;
-        }else{
-            cartData[itemId][size] = quantity;
-        }
-        setCartItem(cartData);
-        localStorage.setItem('cartItem', JSON.stringify(cartData))
-
-    }
-
-    const getCartCount = () =>{
-        let totalCount = 0;
-        for (const itemId in cartItem){
-            for(const size in cartItem[itemId]){
-                totalCount += cartItem[itemId][size]
-                
-            }
-        }
-        return totalCount
-    }
+  const currency = 'đ';
+  const delivery_fee = 30000;
+  const [search, setSearch] = useState('');
+  const [cartItem, setCartItem] = useState(()=>JSON.parse(localStorage.getItem('cartItem')) || []);
+  const navigate = useNavigate();
+  const [showCartSidebar, setShowCartSidebar] = useState(false);
   
+  const addToCart = (id, size, color, quantity) =>{
+    const cartData = [...cartItem];
+    const product = cartData.find(item => item.id === id && item.size === size && item.color === color);
+    if (product) {
+      product.quantity += quantity;
+      
+    }else {
+      cartData.push({id,size,color,quantity})
+    }
+    localStorage.setItem('cartItem', JSON.stringify(cartData));
+    setCartItem(cartData);
+  }
 
-    const updateQuantity =(itemId,size,quantity) =>{
-        const cartData = {...cartItem};
-        if (cartData[itemId]) {
-            cartData[itemId][size] = quantity;
-            
+  const getCartCount = () =>{
+    let totalCount = 0;
+    for (const item of cartItem) {
+      totalCount += item.quantity;
+    }
+    return totalCount;
+  }
+
+  const updateQuantity = (id,size,color,quantity) =>{
+    const cartData = [];
+    for (const item of cartItem) {
+      if (item.id === id && item.size === size && item.color === color) {
+        if (quantity> 0) {
+          cartData.push({...item,quantity})
+          
         }
-        setCartItem(cartData);
-        localStorage.setItem('cartItem',JSON.stringify(cartData));
+        
+      }else{
+        cartData.push(item)
+      }
     }
+    localStorage.setItem('cartItem',JSON.stringify(cartData));
+    setCartItem(cartData);
+  }
 
-    const getCartAmount =() =>{
-        let totalAmount =0;
-        for(const itemId in cartItem){
-            let product = products.find(p => p.id === itemId);
-            if (product) {
-                for(const size in cartItem[itemId]){
-                    totalAmount += product.price * cartItem[itemId][size];
-                }
-                
-            }
-        }
-        return totalAmount;
+  const getCartAmount = () =>{
+    let totalAmount =0;
+    for (const item of cartItem) {
+      const product = products.find(p => p.id === item.id);
+      if (product) {
+        const {productPrice} = getProductPrice(product.price,product.bestSeller);
+        totalAmount += productPrice * item.quantity;
+        
+      }
     }
-    const value = {
-        products, currency, delivery_fee,
-        search,setSearch,
-        cartItem,addToCart,
-        getCartCount,updateQuantity,
-        getCartAmount,
-        navigate,
-        showCartSidebar, setShowCartSidebar
+    return totalAmount;
+  }
+
+  const getTotalPayment = () => getCartAmount() + delivery_fee;
 
 
-    }
-    return(
-        <ShopContext.Provider value={value}>
-            {props.children}
-        </ShopContext.Provider>
-    )
+
+  const value ={
+    products,currency,delivery_fee,
+    search,setSearch,
+    cartItem,setCartItem,
+    navigate,
+    showCartSidebar,setShowCartSidebar,
+    addToCart,getCartCount,
+    updateQuantity,getCartAmount,
+    getTotalPayment
+
+
+
+
+  }
+  return (
+    <ShopContext.Provider value={value}>
+      {props.children}
+
+    </ShopContext.Provider>
+  )
 
 }
 

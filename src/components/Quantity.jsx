@@ -7,10 +7,7 @@ const Quantity = ({qty, setQty}) => {
         }
     }
     const increase = () => {
-        if (qty +1) {
-            setQty(qty+1);
-            
-        }
+        setQty(qty+1);
     }
   return (
     <div className='inline-flex border h-8 md:h-10'>

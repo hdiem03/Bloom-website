@@ -10,15 +10,10 @@ const Navbar = () => {
 
     return (
         <div className='fixed top-0 left-0 right-0 z-50 bg-white flex items-center justify-between h-20 px-6 sm:px-20 shadow-sm'>
-            <ul className='hidden sm:flex gap-6'>
-                <NavLink to='/collection'className={({isActive}) => `text-xs lg:text-sm font-semibold ${isActive ? 'border-b-2 border-black -mb-2' : ''}`}>
-                    TẤT CẢ SẢN PHẨM
-                </NavLink>
-                <NavLink to='/about' className={({isActive}) => `text-xs lg:text-sm font-semibold ${isActive ? 'border-b-2 border-black -mb-2' : ''} `}>
-                    VỀ CHÚNG TÔI
-                </NavLink>
-            </ul>
-            <Link to='/'>
+            <NavLink to='/collection'className={({isActive}) => `text-xs lg:text-sm font-semibold pb-2 border-b-2 ${isActive ? 'border-black' : 'border-transparent hover:border-black'}`}>
+                TẤT CẢ SẢN PHẨM
+             </NavLink>
+            <Link to='/' onClick={() => window.scrollTo(0, 0)}>
             <img src={assets.Logo} className='h-6 md:h-7 lg:h-10' />
             </Link>
             <div className='flex items-center gap-4'>
@@ -26,7 +21,7 @@ const Navbar = () => {
                     <MagnifyingGlassIcon className='w-5 h-5 text-gray-500 cursor-pointer mr-2'/>
                     <input 
                         value={search}
-                        onChange={(e)=>setSearch(e.target.value)}
+                        onChange={e=>setSearch(e.target.value)}
                         type="text"
                         className='text-xs lg:text-sm outline-none'
 
