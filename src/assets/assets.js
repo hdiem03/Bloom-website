@@ -48,6 +48,8 @@ import aokieu6 from './Product/AoKieu/aokieu6.png'
 import aothun1 from './Product/AoThun/aothun1.png';
 import aothun2 from './Product/AoThun/aothun2.png';
 import aothun2_1 from './Product/AoThun/aothun2_1.png';
+import aothun2_2 from './Product/AoThun/aothun2_2.png';
+import aothun2_3 from './Product/AoThun/aothun2_3.png';
 import aothun2_ghi from './Product/AoThun/aothun2_ghi.png';
 import aothun2_ghi1 from './Product/AoThun/aothun2_ghi1.png';
 
@@ -277,7 +279,7 @@ export const products = [
       {
         name: 'Nâu', 
         code: '#d6ba73',
-        image: [aothun2,aothun2_1],
+        image: [aothun2,aothun2_1,aothun2_2,aothun2_3],
       },
       {
         name: 'Ghi', 

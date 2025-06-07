@@ -39,6 +39,7 @@ const Order = () => {
             ))}
 
           </div>
+
           <div className='text-right text-ms md:text-base font-semibold'>
             {order.totalPayment.toLocaleString('vi-VN')}{currency}
           </div>

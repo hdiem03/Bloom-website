@@ -9,6 +9,7 @@ const PlaceOrder = () => {
   const [fullname, setFullname] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [error, setError] = useState('');
   const {products,cartItem, setCartItem,navigate, getTotalPayment} = useContext(ShopContext);
   useEffect(()=>{
     if (cartItem.length === 0) {
@@ -29,6 +30,10 @@ const PlaceOrder = () => {
   },[])
   const handleSubmit = e =>{
     e.preventDefault();
+    if (!method) {
+      setError('Bạn cần chọn phương thức thanh toán!');
+      return; 
+    }
     const newOrder = {
       orderCode: 'DH' + Math.floor(100000 +Math.random() * 900000),
       orderDate: new Date().toLocaleDateString('vi-VN'),
@@ -36,7 +41,7 @@ const PlaceOrder = () => {
       orderItem: [],
       email,
       paymentMethod: method,
-      totalPayment: getTotalPayment,
+      totalPayment: getTotalPayment(),
     }
     for(const item of cartItem) {
       const product = products.find(p => p.id === item.id);
@@ -66,11 +71,20 @@ const PlaceOrder = () => {
           value={fullname}
           onChange={e=>setFullname(e.target.value)}
         />
-        <input type="email" placeholder='Email' required className='border px-3 py-2' 
+        <input 
+          type="email" 
+          placeholder='Email' required
+          pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
+          title='Email không hợp lệ'
+          className='border px-3 py-2' 
           value={email}
           onChange={e=>setEmail(e.target.value)}
         />
-        <input type="text" placeholder='Số điện thoại' required className='border px-3 py-2' 
+        <input type="text"
+          placeholder='Số điện thoại' 
+          required className='border px-3 py-2'
+          pattern='0\d{9}'
+          title='Số điện thoại không hợp lệ' 
           value={phone}
           onChange={e=>setPhone(e.target.value)}
         />
@@ -81,10 +95,13 @@ const PlaceOrder = () => {
       </div>
       <div className='md:w-1/3 md:px-10'>
         <h2 className='text-sm sm:text-xl mb-6 font-semibold'>Phương thức thanh toán</h2>
+        {error && (
+          <p className="text-red-600 mb-4 text-sm">{error}</p>
+        )}
         <div className='flex flex-col border divide-y'>
           <label className='flex items-center gap-2 p-3 cursor-pointer'>
             <input type="radio" value='bank' checked={method === 'bank'} 
-            onChange={()=>setMethod('bank')}
+            onChange={()=>{setMethod('bank'),setError('');}}
             className='accent-black' />
             <p>Thanh toán bằng ngân hàng</p>
           </label>
@@ -93,12 +110,13 @@ const PlaceOrder = () => {
           )}
           <label className='flex items-center gap-2 p-4 cursor-pointer'>
             <input type="radio" value='cod' checked={method === 'cod'}
-            onChange={()=> setMethod('cod')}
+            onChange={()=> {setMethod('cod'),setError('');}}
             className='accent-black' />
             <p>Thanh toán khi giao hàng (COD)</p>
           </label>
 
         </div>
+
 
       </div>
       <div className='w-full md:w-1/3 flex flex-col'>
