@@ -8,8 +8,8 @@ const RelatedProduct = ({category,excludeId }) => {
     const relatedProduct = products.filter(item => category === item.category && item.id !== excludeId).slice(0,4);
  
   return (
-    <div>
-        <h1 className='text-center font-semibold text-xl my-5 md:text-3xl md:my-12'>SẢN PHẨM TƯƠNG TỰ</h1>
+    <>
+        <h1 className='text-center font-semibold text-xl my-5 lg:text-3xl lg:my-12'>SẢN PHẨM TƯƠNG TỰ</h1>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6'>
             {
                 relatedProduct.map(item => (
@@ -19,7 +19,7 @@ const RelatedProduct = ({category,excludeId }) => {
 
         </div>
       
-    </div>
+    </>
   )
 }
 

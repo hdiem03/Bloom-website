@@ -1,51 +1,50 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ShopContext } from '../context/ShopContext';
+import { ShopContext } from '../context/ShopContext'
 
 const Order = () => {
   const {currency} = useContext(ShopContext);
-  const [orderData, setOrderData] = useState([]);
+  const [orders,setOrders] = useState([]);
 
   useEffect(()=>{
-    const storedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    setOrderData(storedOrders);
+    const cartData = JSON.parse(localStorage.getItem('orders')) || [];
+    setOrders(cartData);
+
   },[])
+
   return (
     <div className='pt-10'>
-      <h2 className='md:text-xl font-semibold'>ĐƠN HÀNG CỦA TÔI</h2>
-      <div className='grid grid-cols-[1fr_1fr_1.5fr_2fr_1fr] gap-4 font-semibold pt-14 pb-5 border-b text-xs md:text-sm'>
-        <p>MÃ ĐƠN HÀNG</p>
-        <p>NGÀY</p>
-        <p>TRẠNG THÁI</p>
-        <p>SẢN PHẨM</p>
-        <p className='text-right'>TỔNG TIỀN</p>
+      <div className='font-semibold text-xl mb-10'>ĐƠN HÀNG CỦA TÔI</div>
+      <div className='grid grid-cols-[1fr_1fr_1.5fr_2fr_1fr] gap-4 font-semibold border-b py-4'>
+        <div>MÃ ĐƠN HÀNG</div>
+        <div>NGÀY</div>
+        <div>TRẠNG THÁI</div>
+        <div>SẢN PHẨM</div>
+        <div className='text-right'>TỔNG TIỀN</div>
 
       </div>
-      {orderData.map(order => (
-        <div key={order.orderCode} 
-        className='grid grid-cols-[1fr_1fr_1.5fr_2fr_1fr] gap-4 py-4 border-b'>
-          <p>{order.orderCode}</p>
-          <p>{order.orderDate} </p>
-          <p className='text-green-500'>{order.status} </p>
-          <div className='flex flex-col gap-2 text-sm md:text-base'>
-            {order.orderItem.map((item, index)=>(
-              <div key={index} className='flex gap-4'>
-                <img src={item.image} className='w-20 h-24 object-cover' />
-                <div className='hidden md:block'>
-                  <p>{item.name} </p>
-                  <p className='text-gray-600'>Màu sắc: {item.color} | Size: {item.size} | Số lượng: {item.quantity}</p>
-                </div>
+      {orders.map(order => (
+        <div key={order.id} className='grid grid-cols-[1fr_1fr_1.5fr_2fr_1fr] gap-4 py-6 border-b'>
+          <div>{order.id} </div>
+          <div>{order.date} </div>
+          <div className='text-green-500'>{order.status} </div>
+          {order.items.map((item,index) =>(
+            <div key={index} className='flex gap-3'>
+              <img src={item.image} alt="" className='w-20 h-24 object-cover' />
+              <div>
+                <p>{item.name} </p>
+                <p className='text-sm text-gray-500 mt-3'>{item.color}, {item.size} | Số lượng: {item.quantity} </p>
               </div>
-              
-            ))}
+            </div>
+          ))}
+          <div className='text-right font-semibold'>
+            {order.total.toLocaleString('vi-VN')}{currency}
 
-          </div>
-
-          <div className='text-right text-ms md:text-base font-semibold'>
-            {order.totalPayment.toLocaleString('vi-VN')}{currency}
           </div>
 
         </div>
+        
       ))}
+
       
     </div>
   )

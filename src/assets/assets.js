@@ -83,19 +83,19 @@ export const assets ={
 export const products = [
  
   {
-    id: "1",
-    name: "Đầm tencel nhún cổ chữ V",
+    id: '1',
+    name: 'Đầm tencel nhún cổ chữ V',
     description: `Đầm 2 lớp dáng xòe dài, hai dây, cổ v, dây có chốt tăng giảm, nhún trang trí. 
       Đầm hai dây dáng xòe dài cùng chất liệu Tencel mềm mại giúp tạo độ rủ bồng bềnh, 
       tôn lên nét nữ tính và bay bổng cho người mặc. Phần cổ V sâu vừa phải,
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tencel",
+    category: 'Đầm',
+    subcategory: 'Đầm tencel',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 },
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 },
     ],
     color: [
       {
@@ -113,19 +113,19 @@ export const products = [
     latestProduct: true,
   },
   {
-    id: "2",
-    name: "Đầm tencel xếp nếp  cổ ngang",
+    id: '2',
+    name: 'Đầm tencel xếp nếp  cổ ngang',
     description: `Đầm 2 lớp dáng xòe dài, hai dây, cổ v, dây có chốt tăng giảm, nhún trang trí. 
       Đầm hai dây dáng xòe dài cùng chất liệu Tencel mềm mại giúp tạo độ rủ bồng bềnh, 
       tôn lên nét nữ tính và bay bổng cho người mặc. Phần cổ V sâu vừa phải,
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tencel",
+    category: 'Đầm',
+    subcategory: 'Đầm tencel',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -139,19 +139,19 @@ export const products = [
     latestProduct: true,
   },
   {
-    id: "3",
-    name: "Đầm tencel cổ ngang",
+    id: '3',
+    name: 'Đầm tencel cổ ngang',
     description: `Đầm 2 lớp dáng xòe dài, hai dây, cổ v, dây có chốt tăng giảm, nhún trang trí. 
       Đầm hai dây dáng xòe dài cùng chất liệu Tencel mềm mại giúp tạo độ rủ bồng bềnh, 
       tôn lên nét nữ tính và bay bổng cho người mặc. Phần cổ V sâu vừa phải,
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 1990000,
-    category: "Đầm",
-    subcategory: "Đầm tencel",
+    category: 'Đầm',
+    subcategory: 'Đầm tencel',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -171,19 +171,19 @@ export const products = [
     latestProduct: true,
   },
   {
-    id: "4",
-    name: "Đầm tencel cổ tim",
+    id: '4',
+    name: 'Đầm tencel cổ tim',
     description: `Đầm 2 lớp dáng xòe dài, hai dây, cổ v, dây có chốt tăng giảm, nhún trang trí. 
       Đầm hai dây dáng xòe dài cùng chất liệu Tencel mềm mại giúp tạo độ rủ bồng bềnh, 
       tôn lên nét nữ tính và bay bổng cho người mặc. Phần cổ V sâu vừa phải,
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tencel",
+    category: 'Đầm',
+    subcategory: 'Đầm tencel',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -196,16 +196,16 @@ export const products = [
     latestProduct: true,
   },
   {
-    id: "5",
-    name: "Áo kiểu đính hạt cổ tròn",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '5',
+    name: 'Áo kiểu đính hạt cổ tròn',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 890000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -219,16 +219,16 @@ export const products = [
     latestProduct: true,
   },
   {
-    id: "6",
-    name: "Áo sơ mi thô cổ đức",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '6',
+    name: 'Áo sơ mi thô cổ đức',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 1490000,
-    category: "Áo",
-    subcategory: "Áo sơ mi",
+    category: 'Áo',
+    subcategory: 'Áo sơ mi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -242,16 +242,16 @@ export const products = [
     bestSeller: true,
   },
   {
-    id: "7",
-    name: "Đầm tuytsi cổ tròn",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '7',
+    name: 'Đầm tuytsi cổ tròn',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2490000,
-    category: "Đầm",
-    subcategory: "Đầm tuytsi",
+    category: 'Đầm',
+    subcategory: 'Đầm tuytsi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -264,16 +264,16 @@ export const products = [
     sku: 10004308,
   },
   {
-    id: "8",
-    name: "Áo thun giữ nhiệt cổ lọ",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '8',
+    name: 'Áo thun giữ nhiệt cổ lọ',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 207000,
-    category: "Áo",
-    subcategory: "Áo thun",
+    category: 'Áo',
+    subcategory: 'Áo thun',
     size: [
-      { name: "S", quantity: 0 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 0 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -291,17 +291,17 @@ export const products = [
     bestSeller: true,
   },
   {
-    id: "9",
-    name: "Đầm thô Logo cài cổ tròn",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '9',
+    name: 'Đầm thô Logo cài cổ tròn',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tencel",
+    category: 'Đầm',
+    subcategory: 'Đầm tencel',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 },
-      { name: "XL", quantity: 5 },
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 },
+      { name: 'XL', quantity: 5 },
     ],
     color: [
       {
@@ -315,16 +315,16 @@ export const products = [
     bestSeller: true,
   },
   {
-    id: "10",
-    name: "Đầm Tuytxi cổ ngang",
-    description: "Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc",
+    id: '10',
+    name: 'Đầm Tuytxi cổ ngang',
+    description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tuytsi",
+    category: 'Đầm',
+    subcategory: 'Đầm tuytsi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -337,21 +337,21 @@ export const products = [
     sku: 10004208,
   },  
   {
-    id: "11",
-    name: "Đầm Tuytxi chi tiết cổ tròn",
+    id: '11',
+    name: 'Đầm Tuytxi chi tiết cổ tròn',
     description: `Đầm 2 lớp dáng xòe dài, hai dây, cổ v, dây có chốt tăng giảm, nhún trang trí. 
       Đầm hai dây dáng xòe dài cùng chất liệu Tencel mềm mại giúp tạo độ rủ bồng bềnh, 
       tôn lên nét nữ tính và bay bổng cho người mặc. Phần cổ V sâu vừa phải,
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. 
       Dây đầm có chốt tăng giảm độ dài, dễ dàng điều chỉnh linh hoạt theo dáng người, mang lại sự thoải mái tuyệt đối.`,
     price: 2290000,
-    category: "Đầm",
-    subcategory: "Đầm tuytsi",
+    category: 'Đầm',
+    subcategory: 'Đầm tuytsi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 },
-      { name: "XL", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 },
+      { name: 'XL', quantity: 5 }
     ],
     color: [
       {
@@ -364,19 +364,19 @@ export const products = [
     sku: 10004458,
   },  
   {
-    id: "12",
-    name: "Áo sơ mi tơ cổ đức",
+    id: '12',
+    name: 'Áo sơ mi tơ cổ đức',
     description: `Áo sơ mi 1 lớp dáng suông, tay ngắn, cổ đức, cúc đính máy, túi ốp. Áo sơ mi dáng suông kết hợp túi ốp tinh tế tạo 
                   nên tổng thể vừa giản dị vừa cuốn hút. Họa tiết Toile de Jouy in truyền nhiệt được xử lý sắc nét trên nền vải trắng, 
                   gợi lên nét lãng mạn cổ điển pha chút hiện đại – như một lời thì thầm dịu dàng của mùa hè nước Pháp. Chất liệu vải mềm mại, 
                   mỏng nhẹ và thoáng mát giúp nàng luôn cảm thấy dễ chịu trong những ngày nắng.`,
     price: 1290000,
-    category: "Áo",
-    subcategory: "Áo sơ mi",
+    category: 'Áo',
+    subcategory: 'Áo sơ mi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -389,19 +389,19 @@ export const products = [
     sku: 10004424,
   }, 
   {
-    id: "13",
-    name: "Áo sơ mi lụa nhân tạo cổ đức",
+    id: '13',
+    name: 'Áo sơ mi lụa nhân tạo cổ đức',
     description: `Áo sơ mi 1 lớp dáng suông vừa, tay ngắn, cổ đức kiểu, cúc đính máy. Phần tay bồng nhẹ tạo điểm nhấn duyên dáng, 
                   đồng thời giúp tôn lên sự mềm mại cho đôi tay. Phom dáng suông vừa vặn, thoải mái, dễ dàng kết hợp cùng chân váy hoặc quần ống suông 
                   để hoàn thiện một diện mạo thanh thoát, phù hợp từ công sở đến những buổi hẹn hò nhẹ nhàng ngày hè. Thiết kế đơn giản nhưng tinh tế, 
                   dễ mặc và dễ ứng dụng trong nhiều hoàn cảnh.`,
     price: 1490000,
-    category: "Áo",
-    subcategory: "Áo sơ mi",
+    category: 'Áo',
+    subcategory: 'Áo sơ mi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -414,16 +414,16 @@ export const products = [
     sku: 10004454,
   },
   {
-    id: "14",
-    name: "Áo sơ mi lụa tơ tằm cổ đức",
+    id: '14',
+    name: 'Áo sơ mi lụa tơ tằm cổ đức',
     description: 'Vải lụa tơ tằm',
     price: 2990000,
-    category: "Áo",
-    subcategory: "Áo sơ mi",
+    category: 'Áo',
+    subcategory: 'Áo sơ mi',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -436,19 +436,19 @@ export const products = [
     sku: 10004454,
   }, 
   {
-    id: "15",
-    name: "Áo thun giữ nhiệt cổ lọ",
+    id: '15',
+    name: 'Áo thun giữ nhiệt cổ lọ',
     description: `Áo thun 1 lớp dáng ôm, tay dài, cổ v kiểu, đính hoa . 
     Điểm nổi bật ở thiết kế nằm ở phần đính hạt  hoa cùng phom dáng ôm vào cơ thể, 
     khéo léo tôn lên đường nét cơ thể mà vẫn tạo sự thoải mái cho người mặc. 
     Với chiếc áo này thì chiếc quần âu dài hoặc chân váy dáng xòe sẽ luôn là sự ưu tiên.`,
     price: 387000,
-    category: "Áo",
-    subcategory: "Áo thun",
+    category: 'Áo',
+    subcategory: 'Áo thun',
     size: [
-      { name: "S", quantity: 0 },
-      { name: "M", quantity: 0 },
-      { name: "L", quantity: 0 }
+      { name: 'S', quantity: 0 },
+      { name: 'M', quantity: 0 },
+      { name: 'L', quantity: 0 }
     ],
     color: [
       {
@@ -461,17 +461,17 @@ export const products = [
     sku: 10003860,
   },  
   {
-    id: "16",
-    name: "Áo kiểu đũi Thêu  cổ đức",
+    id: '16',
+    name: 'Áo kiểu đũi Thêu  cổ đức',
     description: `Áo kiểu thêu , 1 lớp dáng suông, tay ngắn, cổ đức, túi ốp, thêu , thêu máy. 
     Thiết kế dáng suông mang lại cảm giác thoải mái, trong khi chi tiết thêu được xử lý khéo léo giúp tạo điểm nhấn nghệ thuật trên nền vải đũi mộc mạc. `,
     price: 387000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -485,17 +485,17 @@ export const products = [
     bestSeller: true,
   },
   {
-    id: "17",
-    name: "Áo kiểu thô cổ ngang",
+    id: '17',
+    name: 'Áo kiểu thô cổ ngang',
     description: `Áo kiểu  nhún eo, 1 lớp dáng suông, tay ngắn, cổ thuyền.`,
     price: 1290000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 },
-      { name: "XL", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 },
+      { name: 'XL', quantity: 5 }
     ],
     color: [
       {
@@ -508,16 +508,16 @@ export const products = [
     sku: 10004206,
   },
   {
-    id: "18",
-    name: "Áo kiểu đũi Thêu ",
+    id: '18',
+    name: 'Áo kiểu đũi Thêu ',
     description: `Áo kiểu 1 lớp dáng suông ngắn, sát nách, cổ tròn, cài cúc cổ sau, thêu , thêu máy.`,
     price: 1290000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -530,17 +530,17 @@ export const products = [
     sku: 10004378,
   },
   {
-    id: "19",
-    name: "Áo kiểu thô cổ chữ V",
+    id: '19',
+    name: 'Áo kiểu thô cổ chữ V',
     description: `Áo len dáng ôm vừa, tay dài, cổ tròn, khóa sau giọt lệ, 
     dây  quanh viền cổ áo và cổ tay. Thiết kế basic dễ mặc cùng quần jeans hoặc chân váy thanh lịch.`,
     price: 267000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -553,22 +553,22 @@ export const products = [
     sku: 10002806,
   },  
   {
-    id: "20",
-    name: "Áo kiểu đũi cổ tròn",
+    id: '20',
+    name: 'Áo kiểu đũi cổ tròn',
     description: `Áo kiểu dáng ôm vừa, tay dài, cổ tròn, khóa sau giọt lệ, 
     dây  quanh viền cổ áo và cổ tay. Thiết kế basic dễ mặc cùng quần jeans hoặc chân váy thanh lịch.`,
     price: 750000,
-    category: "Áo",
-    subcategory: "Áo kiểu",
+    category: 'Áo',
+    subcategory: 'Áo kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
-        name: 'Trắng', 
-        code: '#FFFFFF',
+        name: 'Đen', 
+        code: '#000000',
         image: [aokieu6],
       },
 
@@ -576,18 +576,18 @@ export const products = [
     sku: 10000435,
   },  
   {
-    id: "21",
-    name: "Quần ống suông đũi",
+    id: '21',
+    name: 'Quần ống suông đũi',
     description: `Quần 1,5 lớp dáng ống suông dài, 
     cạp chun sau, khóa trước, cúc, túi ốp/túi dọc. Quần dáng ống suông dài với phần cạp chun sau giúp tăng độ thoải mái khi mặc, 
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 990000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -600,18 +600,18 @@ export const products = [
     sku: 10004379,
   }, 
   {
-    id: "22",
-    name: "Quần ống suông đũi",
+    id: '22',
+    name: 'Quần ống suông đũi',
     description: `Quần 1,5 lớp dáng ống suông dài, 
     cạp chun sau, khóa trước, cúc, túi ốp/túi dọc. Quần dáng ống suông dài với phần cạp chun sau giúp tăng độ thoải mái khi mặc, 
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 1290000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -624,18 +624,18 @@ export const products = [
     sku: 10004379,
   }, 
   {
-    id: "23",
-    name: "Quần ống suông đũi",
+    id: '23',
+    name: 'Quần ống suông đũi',
     description: `Quần 1,5 lớp dáng ống suông dài, 
     cạp chun sau, khóa trước, cúc, túi ốp/túi dọc. Quần dáng ống suông dài với phần cạp chun sau giúp tăng độ thoải mái khi mặc, 
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 1490000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -648,17 +648,17 @@ export const products = [
     sku: 10004215,
   }, 
   {
-    id: "24",
-    name: "Quần ống suông đũi",
+    id: '24',
+    name: 'Quần ống suông đũi',
     description: `Quần dáng ống suông dài, cạp rời, khóa trước, cúc, túi chéo/túi cơi giả. 
     Thiết kế tôn dáng, khéo léo kéo dài chân hiệu quả. Dễ mặc cùng các items áo sơ mi, áo giữ nhiệt và áo khoác linh hoạt.`,
     price: 387000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -671,17 +671,17 @@ export const products = [
     sku: 10003717,
   }, 
   {
-    id: "25",
-    name: "Quần soóc Tuytxi Kẹp ren",
+    id: '25',
+    name: 'Quần soóc Tuytxi Kẹp ren',
     description: `Quần soóc kẹp ren , 1 lớp dáng ống suông ngắn , cạp rời, khóa sườn, móc, túi dọc. 
     Sự kết hợp giữa vẻ năng động của quần soóc và nét mềm mại từ chi tiết ren mang đến thiết kế vừa trẻ trung, vừa nữ tính.`,
     price: 1190000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -694,22 +694,22 @@ export const products = [
     sku: 10004461,
   },
   {
-    id: "26",
-    name: "Quần soóc Tuytxi",
+    id: '26',
+    name: 'Quần soóc Tuytxi',
     description: `Quần soóc kẹp ren , 1 lớp dáng ống suông ngắn , cạp rời, khóa sườn, móc, túi dọc. 
     Sự kết hợp giữa vẻ năng động của quần soóc và nét mềm mại từ chi tiết ren mang đến thiết kế vừa trẻ trung, vừa nữ tính.`,
     price: 1190000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
-        name: 'Đen', 
-        code: '#000000',
+        name: 'Trắng', 
+        code: '#FFFFFF',
         image: [quan7],
       },
 
@@ -717,16 +717,16 @@ export const products = [
     sku: 10004461,
   },
   {
-    id: "27",
-    name: "Quần âu Tuytxi",
+    id: '27',
+    name: 'Quần âu Tuytxi',
     description: `Quần 2 lớp dáng ống suông ngắn, cạp rời, khóa sườn, móc, túi dọc, túi ốp có nắp.`,
     price: 990000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -739,17 +739,17 @@ export const products = [
     sku: 10004423,
   },
   {
-    id: "28",
-    name: "Quần âu Tuytxi",
+    id: '28',
+    name: 'Quần âu Tuytxi',
     description: `Quần âu 1 lớp, dáng ống côn, cạp rời, khóa trước, cúc, móc, túi dọc. 
     Thiết kế ôm vừa vặn từ trên xuống dưới tạo nên vẻ ngoài thanh thoát, gọn gàng và vô cùng thời thượng.`,
     price: 1290000,
-    category: "Quần",
-    subcategory: "Quần kiểu",
+    category: 'Quần',
+    subcategory: 'Quần kiểu',
     size: [
-      { name: "S", quantity: 5 },
-      { name: "M", quantity: 5 },
-      { name: "L", quantity: 5 }
+      { name: 'S', quantity: 5 },
+      { name: 'M', quantity: 5 },
+      { name: 'L', quantity: 5 }
     ],
     color: [
       {
@@ -761,4 +761,5 @@ export const products = [
     ],
     sku: 10004502,
   },
+
 ];

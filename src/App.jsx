@@ -9,14 +9,11 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Order from './pages/Order'
 
-
 function App() {
- 
-
   return (
     <div>
       <Navbar/>
-      <div className='pt-20 px-6 sm:px-20'>
+      <div className='pt-20 px-4 lg:px-20'>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
           <Route path='/collection' element={<Collection/>}/>
@@ -24,14 +21,11 @@ function App() {
           <Route path='/cart' element={<Cart/>} />
           <Route path='/checkout' element={<PlaceOrder/>} />
           <Route path='login' element={<Login/>} /> 
-          <Route path='/order' element={<Order/>} />
-
+          <Route path='/orders' element={<Order/>} />
         </Routes>
-        
       </div>
       <Footer />
     </div>
   )
 }
-
 export default App

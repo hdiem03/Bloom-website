@@ -9,8 +9,8 @@ const BestSeller = () => {
 
    
   return (
-    <div>
-        <h1 className='text-center font-semibold text-xl my-5 md:text-3xl md:my-12'>SẢN PHẨM BÁN CHẠY</h1>
+    <>
+        <h1 className='text-center font-semibold text-xl my-5 lg:text-3xl lg:my-12'>SẢN PHẨM BÁN CHẠY</h1>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-6'>
             {
                 bestSeller.map(item => (
@@ -20,7 +20,7 @@ const BestSeller = () => {
 
         </div>
       
-    </div>
+    </>
   )
 }
 

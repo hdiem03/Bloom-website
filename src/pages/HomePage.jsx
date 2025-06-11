@@ -5,12 +5,12 @@ import BestSeller from '../components/BestSeller'
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Hero />
       <LatestProduct/>
       <BestSeller/>
       
-    </div>
+    </>
   )
 }
 

@@ -10,15 +10,16 @@ const ProductItem = ({id,name,price,color,bestSeller}) => {
   const image = hover && selectedColor.image[1] ? selectedColor.image[1] : selectedColor.image[0];
   const {productPrice,isDiscounted} = getProductPrice(price,bestSeller)
   return (
-    <Link to={`/product/${id}`}>
-      <div
+    <div>
+      <Link
+        to={`/product/${id}`}
         onMouseEnter={()=>setHover(true)}
         onMouseLeave={()=>setHover(false)}
       >
-        <img src={image}  />
+        <img src={image} alt='' className='pb-3' />
 
-      </div>
-      <p className='text-sm md:text-base pt-3'>{name} </p>
+      </Link>
+      <Link to={`/product/${id}`}  className='text-sm lg:text-base'>{name} </Link>
       <div className='flex items-center gap-2 my-2'>
         <p className='font-semibold'>{productPrice.toLocaleString('vi-VN')}{currency} </p>
         {isDiscounted && (
@@ -33,11 +34,7 @@ const ProductItem = ({id,name,price,color,bestSeller}) => {
         {color.map(c =>(
           <button
             key={c.name}
-            onClick={e =>{
-              e.preventDefault();
-              setSelectedColor(c);
-              
-            }}
+            onClick={() => setSelectedColor(c)}
             className={`w-5 h-5 rounded-full border ${selectedColor.name === c.name ? 'border-gray-500' :''}`}
             style={{backgroundColor: c.code}}
           >
@@ -47,7 +44,7 @@ const ProductItem = ({id,name,price,color,bestSeller}) => {
 
       </div>
       
-    </Link>
+    </div>
   )
 }
 

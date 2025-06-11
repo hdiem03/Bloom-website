@@ -1,31 +1,40 @@
 import { createContext, useState } from "react";
 import { products } from "../assets/assets";
-import { useNavigate } from "react-router-dom";
 import { getProductPrice } from "../utils/utils";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
 
 const ShopContextProvider = (props) =>{
+
   const currency = 'đ';
   const delivery_fee = 30000;
-  const [search, setSearch] = useState('');
-  const [cartItem, setCartItem] = useState(()=>JSON.parse(localStorage.getItem('cartItem')) || []);
-  const navigate = useNavigate();
+  const [cartItem, setCartItem] = useState(()=> JSON.parse(localStorage.getItem('cartItem')) || []);
   const [showCartSidebar, setShowCartSidebar] = useState(false);
-  
-  const addToCart = (id, size, color, quantity) =>{
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
+    
+  const addToCart = (id, size, color, quantity) => {
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+
+    const {productPrice} = getProductPrice(product.price,product.bestSeller);
+    const image = product.color.find(c => c.name === color).image[0];
     const cartData = [...cartItem];
-    const product = cartData.find(item => item.id === id && item.size === size && item.color === color);
-    if (product) {
-      product.quantity += quantity;
-      
-    }else {
-      cartData.push({id,size,color,quantity})
+    const existingItem = cartData.find(item => item.id === id && item.size === size && item.color === color);
+
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      cartData.push({id, name: product.name,productPrice,size,color,image,quantity});
     }
+
     localStorage.setItem('cartItem', JSON.stringify(cartData));
     setCartItem(cartData);
-  }
+  };
 
+  
+  
   const getCartCount = () =>{
     let totalCount = 0;
     for (const item of cartItem) {
@@ -34,25 +43,22 @@ const ShopContextProvider = (props) =>{
     return totalCount;
   }
 
-  const updateQuantity = (id,size,color,quantity) =>{
-    const cartData = [];
-    for (const item of cartItem) {
+  const updateQuantity= (id,size,color,quantity) =>{
+    const cartData = cartItem.map(item =>{
       if (item.id === id && item.size === size && item.color === color) {
-        if (quantity> 0) {
-          cartData.push({...item,quantity})
-          
-        }
+        return {...item, quantity};
         
-      }else{
-        cartData.push(item)
       }
-    }
+      return item;
+    })
+    .filter(item => item.quantity >0);
     localStorage.setItem('cartItem',JSON.stringify(cartData));
     setCartItem(cartData);
-  }
 
-  const getCartAmount = () =>{
-    let totalAmount =0;
+  }
+  
+  const getCartAmount= () =>{
+    let totalAmount = 0;
     for (const item of cartItem) {
       const product = products.find(p => p.id === item.id);
       if (product) {
@@ -64,28 +70,23 @@ const ShopContextProvider = (props) =>{
     return totalAmount;
   }
 
-  const getTotalPayment = () => getCartAmount() + delivery_fee;
+  const getTotalPayment= () => getCartAmount() +delivery_fee;
 
-
-
-  const value ={
-    products,currency,delivery_fee,
-    search,setSearch,
+  const value = {
+    products, currency, delivery_fee,
     cartItem,setCartItem,
-    navigate,
+    addToCart, getCartCount,
+    updateQuantity, getCartAmount,
+    getTotalPayment,
     showCartSidebar,setShowCartSidebar,
-    addToCart,getCartCount,
-    updateQuantity,getCartAmount,
-    getTotalPayment
-
-
-
+    search,setSearch,
+    navigate
 
   }
+
   return (
     <ShopContext.Provider value={value}>
       {props.children}
-
     </ShopContext.Provider>
   )
 

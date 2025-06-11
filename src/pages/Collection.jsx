@@ -15,34 +15,34 @@ const Collection = () => {
 
   const toggleCategory = e =>{
     if (selectedCategory.includes(e.target.value)) {
-      setSelectedCategory(prev => prev.filter(item => item !== e.target.value))
+      setSelectedCategory(selectedCategory.filter(item => item !== e.target.value))
       
     }else{
-      setSelectedCategory(prev => [...prev,e.target.value])
+      setSelectedCategory([...selectedCategory,e.target.value])
     }
   }
   const toggleSize = e =>{
     if (selectedSize.includes(e.target.value)) {
-      setSelectedSize(prev => prev.filter(item => item !== e.target.value))
+      setSelectedSize(selectedSize.filter(item => item !== e.target.value))
       
     }else{
-      setSelectedSize(prev => [...prev,e.target.value])
+      setSelectedSize([...selectedSize,e.target.value])
     }
   }
   const toggleColor = e =>{
     if (selectedColor.includes(e.target.value)) {
-      setSelectedColor(prev => prev.filter(item => item !== e.target.value))
+      setSelectedColor(selectedColor.filter(item => item !== e.target.value))
       
     }else{
-      setSelectedColor(prev => [...prev,e.target.value])
+      setSelectedColor([...selectedColor,e.target.value])
     }
   }
   const togglePrice = e =>{
     if (selectedPrice.includes(e.target.value)) {
-      setSelectedPrice(prev => prev.filter(item => item !== e.target.value))
+      setSelectedPrice(selectedPrice.filter(item => item !== e.target.value))
       
     }else{
-      setSelectedPrice(prev => [...prev,e.target.value])
+      setSelectedPrice([...selectedPrice,e.target.value])
     }
   }
   
@@ -110,56 +110,38 @@ const Collection = () => {
 
         <p>Danh mục sản phẩm</p>
         <div className='flex flex-col gap-2 text-sm py-3'>
-          <label>
-            <input type="checkbox" value={'Áo'} className='w-4 h-4 mr-3'  onChange={toggleCategory}/>Áo
-          </label>
-          <label>
-            <input type="checkbox" value={'Đầm'} className='w-4 h-4 mr-3' onChange={toggleCategory} />Đầm
-          </label>
-          <label>
-            <input type="checkbox" value={'Quần'} className='w-4 h-4 mr-3' onChange={toggleCategory} />Quần
-          </label>          
+          {
+            ['Áo','Đầm','Quần'].map(cat => (
+              <label key={cat}>
+                <input type="checkbox" value={cat} className='w-4 h-4 mr-3' onChange={toggleCategory} />
+                {cat}
+              </label>
+            ))
+          }
+               
         </div>
         <hr className='border my-3'/>
         <p>Size</p>
         <div className='flex flex-col gap-2 text-sm py-3'>
-          <label>
-            <input type="checkbox" value={'S'} className='w-4 h-4 mr-3' onChange={toggleSize} />S
-          </label>
-          <label>
-            <input type="checkbox" value={'M'} className='w-4 h-4 mr-3' onChange={toggleSize} />M
-          </label>
-          <label>
-            <input type="checkbox" value={'L'} className='w-4 h-4 mr-3' onChange={toggleSize} />L
-          </label>    
-          <label>
-            <input type="checkbox" value={'XL'} className='w-4 h-4 mr-3' onChange={toggleSize} />XL
-          </label>  
+          {
+            ['S','M','L','XL'].map(size => (
+              <label key={size}>
+                <input type="checkbox" value={size} className='w-4 h-4 mr-3' onChange={toggleSize} />
+                {size}
+              </label>
+            ))
+          }
+         
         </div>
         <hr className='border my-3'/>
         <p>Màu sắc</p>
         <div className='flex flex-col gap-2 text-sm py-3'>
-          <label>
-            <input type="checkbox" value={'Trắng'} className='w-4 h-4 mr-3' onChange={toggleColor} />Trắng
-          </label>
-          <label>
-            <input type="checkbox" value={'Đen'} className='w-4 h-4 mr-3' onChange={toggleColor} />Đen
-          </label>
-          <label>
-            <input type="checkbox" value={'Hồng'} className='w-4 h-4 mr-3' onChange={toggleColor} />Hồng
-          </label>    
-          <label>
-            <input type="checkbox" value={'Cam'} className='w-4 h-4 mr-3' onChange={toggleColor} />Cam
-          </label>  
-          <label>
-            <input type="checkbox" value={'Xanh'} className='w-4 h-4 mr-3'  onChange={toggleColor}/>Xanh
-          </label>
-          <label>
-            <input type="checkbox" value={'Nâu'} className='w-4 h-4 mr-3'  onChange={toggleColor}/>Nâu
-          </label>    
-          <label>
-            <input type="checkbox" value={'Ghi'} className='w-4 h-4 mr-3'  onChange={toggleColor}/>Ghi
-          </label> 
+          {['Trắng' ,'Đen' ,'Hồng', 'Cam','Xanh', 'Nâu','Ghi'].map(color => (
+            <label key={color}>
+              <input type="checkbox" value={color} className='w-4 h-4 mr-3' onChange={toggleColor}/>
+              {color}
+            </label>
+          ))}
         </div>
         <hr className='border my-3'/>
         <p>Giá</p>
@@ -182,7 +164,7 @@ const Collection = () => {
           <p className='text-sm lg:text-xl font-semibold'>TẤT CẢ SẢN PHẨM</p>
           <div className='flex items-center gap-3'>
             <p className='text-sm'>Sắp xếp theo</p>
-            <select onClick={e=>setSort(e.target.value)} className='border border-gray-500 p-2 w-48 text-sm'>
+            <select onChange={e=>setSort(e.target.value)} className='border border-gray-500 p-2 w-48 text-sm'>
             <option value="relevant">Mặc định</option>
             <option value="low-high">Giá: thấp đến cao</option>
             <option value="high-low">Giá: cao đến thấp</option>

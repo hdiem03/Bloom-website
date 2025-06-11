@@ -11,21 +11,20 @@ const Product = () => {
   const {products,currency,addToCart,navigate} = useContext(ShopContext);
   const product = products.find(item => item.id === productId);
   if (!product) return <div>Sản phẩm không tồn tại.</div>
-  const [color, setColor] = useState(product.color[0]);
-  // const [size,setSize] = useState(product.size[0]);
-const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) || null);
+  const [selectedColor, setSelectedColor] = useState(product.color[0]);
 
-  const [image, setImage] = useState(product.color[0].image[0]);
+  const [selectedSize, setSelectedSize] = useState(() => product.size.find(s => s.quantity > 0) || null);
+
+  const [imageByColor, setImageByColor] = useState(product.color[0].image[0]);
   const [quantity, setQuantity] = useState(1);
   const {productPrice, isDiscounted} = getProductPrice(product.price,product.bestSeller);
 
   useEffect(()=>{
     if (product) {
-      setColor(product.color[0]);
-      // setSize(product.size[0]);
-      setSize(product.size.find(s => s.quantity > 0) || null);
+      setSelectedColor(product.color[0]);
+      setSelectedSize(product.size.find(s => s.quantity > 0) || null);
 
-      setImage(product.color[0].image[0]);
+      setImageByColor(product.color[0].image[0]);
       setQuantity(1);
       
     }
@@ -33,13 +32,13 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
 
   },[product])
   return (
-    <div>
+    <>
       <div className='flex flex-col lg:flex-row gap-20 pt-10'>
         {/* image */}
         <div className='flex-1 flex flex-col-reverse lg:flex-row gap-3'>
           <div className='flex lg:flex-col lg:w-[19%] gap-2 lg:gap-3'>
-            {color.image.map(i => (
-              <img onClick={()=>setImage(i)} src={i} key={i} className='w-[24%] lg:w-full cursor-pointer' />
+            {selectedColor.image.map(i => (
+              <img onClick={()=>setImageByColor(i)} src={i} key={i} className='w-[24%] lg:w-full cursor-pointer' />
             ))}
 
           </div>
@@ -57,7 +56,7 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
                 e.currentTarget.querySelector('img').style.transformOrigin ='center center'
               }}
             >
-              <img src={image} className='transition-transform object-contain hover:scale-150' />
+              <img src={imageByColor} className='transition-transform object-contain hover:scale-150' />
             </div>
 
           </div>
@@ -87,13 +86,15 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
               </>              
             )}
           </div>
-          <p>Màu sắc: {color.name} </p>
+          <p>Màu sắc: {selectedColor.name} </p>
           <div className='flex gap-4 my-4'>
             {product.color.map(c => (
               <button
-                onClick={()=>{setColor(c), setImage(c.image[0])}}
+                onClick={()=>{
+                  setSelectedColor(c);
+                  setImageByColor(c.image[0])}}
                 key={c.name}
-                className={`w-6 h-6 rounded-full border ${color.name === c.name ? 'outline outline-1 outline-offset-2' : ''}`}
+                className={`w-6 h-6 rounded-full border ${selectedColor.name === c.name ? 'outline outline-1 outline-offset-2' : ''}`}
                 style={{backgroundColor: c.code}}
               >
 
@@ -105,11 +106,11 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
             <p>Size</p>
             {product.size.map(s => (
               <button
-                onClick={()=> setSize(s)}
+                onClick={()=> setSelectedSize(s)}
                 key={s.name}
                 disabled={s.quantity === 0}
-                className={`relative border py-1 w-[50px] select-none
-                  ${size && size.name === s.name ? 'border-black text-black': 'text-gray-500'}`}
+                className={`relative border h-8 w-12
+                  ${selectedSize && selectedSize.name === s.name ? 'border-black text-black': 'text-gray-500'}`}
               >
                 {s.name}
                 {s.quantity === 0 &&(
@@ -121,29 +122,15 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
           </div>
           <div className='flex items-center gap-5'>
             <p>Số lượng</p>
-            {/* <Quantity qty={quantity} setQty={setQuantity} /> */}
             <Quantity qty={quantity} setQty={(newQty => {
-              if (newQty <= size.quantity) {
+              if (newQty <= selectedSize.quantity) {
                 setQuantity(newQty);
                 
               }
             })} />
 
           </div>
-          {/* <div className='flex gap-4 my-8'>
-            <button 
-              onClick={()=>addToCart(product.id,size.name,color.name,quantity)}
-              className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
-              THÊM VÀO GIỎ
-            </button>
-            <button 
-              onClick={()=> {addToCart(product.id,size.name,color.name,quantity), navigate('/checkout')}}
-            className='w-48 h-14 px-8 bg-white text-black border border-black hover:bg-black hover:text-white'>
-              MUA HÀNG
-            </button>
-
-          </div> */}
-          {!size ? (
+          {!selectedSize ? (
             <button 
               disabled
               className='my-8 w-48 h-14 px-8 bg-gray-300 text-white'>
@@ -152,18 +139,18 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
 
           ) :(
             <div className='flex gap-4 my-8'>
-            <button 
-              onClick={()=>addToCart(product.id,size.name,color.name,quantity)}
-              className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
-              THÊM VÀO GIỎ
-            </button>
-            <button 
-              onClick={()=> {addToCart(product.id,size.name,color.name,quantity), navigate('/checkout')}}
-            className='w-48 h-14 px-8 bg-white text-black border border-black hover:bg-black hover:text-white'>
-              MUA HÀNG
-            </button>
+              <button 
+                onClick={()=>addToCart(product.id,selectedSize.name,selectedColor.name,quantity)}
+                className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
+                THÊM VÀO GIỎ
+              </button>
+              <button 
+                onClick={()=> {addToCart(product.id,selectedSize.name,selectedColor.name,quantity), navigate('/checkout')}}
+              className='w-48 h-14 px-8 bg-white text-black border border-black hover:bg-black hover:text-white'>
+                MUA HÀNG
+              </button>
 
-          </div>
+            </div>
           )}
           <hr className='mt-8'/>
           <p className='font-semibold py-6'>CHI TIẾT SẢN PHẨM</p>
@@ -174,7 +161,7 @@ const [size, setSize] = useState(() => product.size.find(s => s.quantity > 0) ||
       </div>
       <RelatedProduct category={product.category} excludeId={product.id}/>
       
-    </div>
+    </>
   )
 }
 

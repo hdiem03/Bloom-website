@@ -1,129 +1,131 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ShopContext } from '../context/ShopContext';
-import AddressSelect from '../components/AddressSelect';
-import BankQrCode from '../components/BankQrCode';
-import CartTotal from '../components/CartTotal';
+import AddressSelect from '../components/AddressSelect'
+import CartTotal from '../components/CartTotal'
+import { ShopContext } from '../context/ShopContext'
+import BankQrCode from '../components/BankQrCode'
 
 const PlaceOrder = () => {
-  const [method, setMethod] = useState('');
-  const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [error, setError] = useState('');
-  const {products,cartItem, setCartItem,navigate, getTotalPayment} = useContext(ShopContext);
-  useEffect(()=>{
+  const {getTotalPayment,cartItem,setCartItem,navigate} = useContext(ShopContext);
+  const [method,setMethod] = useState('');
+  const [fullname,setFullName] = useState('');
+  const [email,setEmail] = useState('');
+  const [phone,setPhone] = useState('');
+  const [message,setMessage] = useState('');
+  
+  useEffect(() =>{
     if (cartItem.length === 0) {
-      navigate('/cart');
-      
+      navigate('/cart')
     }
 
   },[])
-  useEffect(()=>{
-    const storedUser = JSON.parse(localStorage.getItem('users'));
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    if (isLoggedIn && storedUser) {
-      setFullname(storedUser.fullname || '');
-      setEmail(storedUser.email || '');
-      setPhone(storedUser.phone || '');
+
+  useEffect(() =>{
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+      setFullName(currentUser.fullname);
+      setEmail(currentUser.email);
+      setPhone(currentUser.phone);
       
     }
   },[])
-  const handleSubmit = e =>{
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!method) {
-      setError('Bạn cần chọn phương thức thanh toán!');
-      return; 
+      setMessage('Vui lòng chọn phương thức thanh toán!');
+      return;
+      
     }
-    const newOrder = {
-      orderCode: 'DH' + Math.floor(100000 +Math.random() * 900000),
-      orderDate: new Date().toLocaleDateString('vi-VN'),
-      status: 'Đặt hàng thành công',
-      orderItem: [],
-      email,
-      paymentMethod: method,
-      totalPayment: getTotalPayment(),
-    }
-    for(const item of cartItem) {
-      const product = products.find(p => p.id === item.id);
-      newOrder.orderItem.push({
-        id: item.id,
-        name: product.name,
-        image: product.color.find(c=> c.name === item.color).image[0],
-        size: item.size,
-        color: item.color,
-        quantity: item.quantity,
-      })
-    }
-    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-    orders.push(newOrder);
-    
-    localStorage.setItem('orders', JSON.stringify(orders));
-    localStorage.removeItem('cartItem');
-    setCartItem([]);
-    navigate('/order');
 
+    const cartData = JSON.parse(localStorage.getItem('cartItem'));
+    const newOrder = {
+      id: 'DH' + Math.floor(100000 + Math.random() * 900000),
+      date: new Date().toLocaleDateString('vi-VN'),
+      status: 'Đặt hàng thành công',
+      items: cartData,
+      total: getTotalPayment()
+
+    }
+
+    const existingOrders = JSON.parse(localStorage.getItem('orders')) || [];
+    const updatedOrders = [...existingOrders,newOrder];
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
+    localStorage.setItem('cartItem',JSON.stringify([]));
+    setCartItem([]);
+
+    navigate('/orders');
+    
   }
+
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col md:flex-row gap-6 pt-5 sm:pt-10'>
-      <div className='flex flex-col gap-3 w-full md:w-1/3'>
-        <h2 className='text-sm sm:text-xl mb-3 font-semibold'>Thông tin mua hàng</h2>
-        <input type="text" placeholder='Họ và tên' required className='border px-3 py-2' 
+    <form onSubmit={handleSubmit} className='flex flex-col lg:flex-row gap-10 pt-10'>
+      <div className='flex-1 flex flex-col gap-4'>
+        <div className='font-semibold text-xl'>Thông tin mua hàng</div>
+        <input type="text" placeholder='Họ và tên' required
+          className='border px-3 py-2'
           value={fullname}
-          onChange={e=>setFullname(e.target.value)}
+          onChange={e => setFullName(e.target.value)}
         />
-        <input 
-          type="email" 
-          placeholder='Email' required
-          pattern='^[^\s@]+@[^\s@]+\.[^\s@]+$'
-          title='Email không hợp lệ'
-          className='border px-3 py-2' 
+        <input type="email" placeholder='Email' required
+          className='border px-3 py-2'
           value={email}
-          onChange={e=>setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
-        <input type="text"
-          placeholder='Số điện thoại' 
-          required className='border px-3 py-2'
-          pattern='0\d{9}'
-          title='Số điện thoại không hợp lệ' 
+        <input type="text" placeholder='Số điện thoại' required
+          className='border px-3 py-2'
           value={phone}
-          onChange={e=>setPhone(e.target.value)}
+          onChange={e => setPhone(e.target.value)}
+        />
+        <input type="text" placeholder='Địa chỉ' required
+          className='border px-3 py-2'
         />
         <AddressSelect />
-        <input type="text" placeholder='Địa chỉ' required className='border px-3 py-2'/>
-        <input type="text" placeholder='Ghi chú' className='border px-3 py-2'/>
+        <input type="text" placeholder='Ghi chú'
+          className='border px-3 py-2'
+        />
 
       </div>
-      <div className='md:w-1/3 md:px-10'>
-        <h2 className='text-sm sm:text-xl mb-6 font-semibold'>Phương thức thanh toán</h2>
-        {error && (
-          <p className="text-red-600 mb-4 text-sm">{error}</p>
+      <div className='flex-1'>
+        <div className='text-xl font-semibold mb-4'>Phương thức thanh toán</div>
+        {message && (
+          <div className='text-red-600 mb-4 text-sm'>{message} </div>
         )}
         <div className='flex flex-col border divide-y'>
-          <label className='flex items-center gap-2 p-3 cursor-pointer'>
-            <input type="radio" value='bank' checked={method === 'bank'} 
-            onChange={()=>{setMethod('bank'),setError('');}}
-            className='accent-black' />
-            <p>Thanh toán bằng ngân hàng</p>
+          <label className='flex gap-2 p-3 cursor-pointer'>
+            <input type="radio" className='accent-black'
+            value='bank'
+            checked={method === 'bank'}
+            onChange={() => {
+              setMethod('bank');
+              setMessage('')
+            }
+            }
+            />
+            Thanh toán ngân hàng
           </label>
           {method === 'bank' && (
-            <div className='p-3 border-t'><BankQrCode/></div>
+            <BankQrCode/>
           )}
-          <label className='flex items-center gap-2 p-4 cursor-pointer'>
-            <input type="radio" value='cod' checked={method === 'cod'}
-            onChange={()=> {setMethod('cod'),setError('');}}
-            className='accent-black' />
-            <p>Thanh toán khi giao hàng (COD)</p>
+          <label className='flex gap-2 p-3 cursor-pointer'>
+            <input type="radio" className='accent-black'
+              value='cod'
+              checked={method === 'cod'}
+              onChange={() => {
+                setMethod('cod');
+                setMessage('');
+              }}
+            />
+            Thanh toán khi giao hàng
           </label>
 
         </div>
 
-
       </div>
-      <div className='w-full md:w-1/3 flex flex-col'>
-          <CartTotal/>
-          <button type='submit' className='mt-4 py-2 border bg-black text-white hover:bg-white hover:text-black'>
-            ĐẶT HÀNG
-          </button>
+      <div className='flex-1'>
+        <CartTotal/>
+        <button type='submit' className='w-full p-2 mt-6 bg-black text-white border border-black hover:bg-white hover:text-black'>
+          ĐẶT HÀNG
+        </button>
 
       </div>
       
