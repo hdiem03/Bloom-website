@@ -49,3 +49,4 @@ const ProductItem = ({id,name,price,color,bestSeller}) => {
 }
 
 export default ProductItem
+

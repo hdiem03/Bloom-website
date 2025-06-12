@@ -1,9 +1,14 @@
 import aosomi1 from './Product/AoSoMi/aosomi1.png';
 import aosomi1_2 from './Product/AoSoMi/aosomi1_2.png';
-
+import aosomi1_3 from './Product/AoSoMi/aosomi1_3.png';
+import aosomi1_4 from './Product/AoSoMi/aosomi1_4.png';
 import aosomi2 from './Product/AoSoMi/aosomi2.png';
 import aosomi3 from './Product/AoSoMi/aosomi3.png';
 import aosomi4 from './Product/AoSoMi/aosomi4.png';
+import aosomi1_trang from './Product/AoSoMi/aosomi1_trang.png';
+import aosomi1_trang_2 from './Product/AoSoMi/aosomi1_trang_2.png';
+import aosomi1_trang_3 from './Product/AoSoMi/aosomi1_trang_3.png';
+import aosomi1_trang_4 from './Product/AoSoMi/aosomi1_trang_4.png';
 
 import dam1 from './Product/Dam/dam1.png';
 import dam1_1 from './Product/Dam/dam1_1.png';
@@ -91,7 +96,6 @@ export const products = [
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tencel',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -121,7 +125,6 @@ export const products = [
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tencel',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -147,7 +150,6 @@ export const products = [
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 1990000,
     category: 'Đầm',
-    subcategory: 'Đầm tencel',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -179,7 +181,6 @@ export const products = [
       khéo léo tôn lên đường nét thanh thoát nơi phần cổ và xương quai xanh. `,
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tencel',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -201,7 +202,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 890000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -224,7 +224,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 1490000,
     category: 'Áo',
-    subcategory: 'Áo sơ mi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -234,9 +233,13 @@ export const products = [
       {
         name: 'Xanh', 
         code: '#0033FF',
-        image: [aosomi1,aosomi1_2] 
+        image: [aosomi1,aosomi1_2,aosomi1_3,aosomi1_4] 
       },
-
+      {
+        name: 'Trắng', 
+        code: '#FFFFFF',
+        image: [aosomi1_trang,aosomi1_trang_2,aosomi1_trang_3,aosomi1_trang_4] 
+      },
     ],
     sku: 10004454,
     bestSeller: true,
@@ -247,7 +250,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2490000,
     category: 'Đầm',
-    subcategory: 'Đầm tuytsi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -269,7 +271,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 207000,
     category: 'Áo',
-    subcategory: 'Áo thun',
     size: [
       { name: 'S', quantity: 0 },
       { name: 'M', quantity: 5 },
@@ -296,7 +297,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tencel',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -320,7 +320,6 @@ export const products = [
     description: 'Chất liệu: Vải, Form: Oversize, Thiết kế: Kẻ Sọc',
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tuytsi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -346,7 +345,6 @@ export const products = [
       Dây đầm có chốt tăng giảm độ dài, dễ dàng điều chỉnh linh hoạt theo dáng người, mang lại sự thoải mái tuyệt đối.`,
     price: 2290000,
     category: 'Đầm',
-    subcategory: 'Đầm tuytsi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -372,7 +370,6 @@ export const products = [
                   mỏng nhẹ và thoáng mát giúp nàng luôn cảm thấy dễ chịu trong những ngày nắng.`,
     price: 1290000,
     category: 'Áo',
-    subcategory: 'Áo sơ mi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -397,7 +394,6 @@ export const products = [
                   dễ mặc và dễ ứng dụng trong nhiều hoàn cảnh.`,
     price: 1490000,
     category: 'Áo',
-    subcategory: 'Áo sơ mi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -419,7 +415,6 @@ export const products = [
     description: 'Vải lụa tơ tằm',
     price: 2990000,
     category: 'Áo',
-    subcategory: 'Áo sơ mi',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -444,7 +439,6 @@ export const products = [
     Với chiếc áo này thì chiếc quần âu dài hoặc chân váy dáng xòe sẽ luôn là sự ưu tiên.`,
     price: 387000,
     category: 'Áo',
-    subcategory: 'Áo thun',
     size: [
       { name: 'S', quantity: 0 },
       { name: 'M', quantity: 0 },
@@ -467,7 +461,6 @@ export const products = [
     Thiết kế dáng suông mang lại cảm giác thoải mái, trong khi chi tiết thêu được xử lý khéo léo giúp tạo điểm nhấn nghệ thuật trên nền vải đũi mộc mạc. `,
     price: 387000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -490,7 +483,6 @@ export const products = [
     description: `Áo kiểu  nhún eo, 1 lớp dáng suông, tay ngắn, cổ thuyền.`,
     price: 1290000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -513,7 +505,6 @@ export const products = [
     description: `Áo kiểu 1 lớp dáng suông ngắn, sát nách, cổ tròn, cài cúc cổ sau, thêu , thêu máy.`,
     price: 1290000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -536,7 +527,6 @@ export const products = [
     dây  quanh viền cổ áo và cổ tay. Thiết kế basic dễ mặc cùng quần jeans hoặc chân váy thanh lịch.`,
     price: 267000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -559,7 +549,6 @@ export const products = [
     dây  quanh viền cổ áo và cổ tay. Thiết kế basic dễ mặc cùng quần jeans hoặc chân váy thanh lịch.`,
     price: 750000,
     category: 'Áo',
-    subcategory: 'Áo kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -583,7 +572,6 @@ export const products = [
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 990000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -607,7 +595,6 @@ export const products = [
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 1290000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -631,7 +618,6 @@ export const products = [
     đồng thời giữ phom dáng chỉnh chu suốt ngày dài.`,
     price: 1490000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -654,7 +640,6 @@ export const products = [
     Thiết kế tôn dáng, khéo léo kéo dài chân hiệu quả. Dễ mặc cùng các items áo sơ mi, áo giữ nhiệt và áo khoác linh hoạt.`,
     price: 387000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -677,7 +662,6 @@ export const products = [
     Sự kết hợp giữa vẻ năng động của quần soóc và nét mềm mại từ chi tiết ren mang đến thiết kế vừa trẻ trung, vừa nữ tính.`,
     price: 1190000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -700,7 +684,6 @@ export const products = [
     Sự kết hợp giữa vẻ năng động của quần soóc và nét mềm mại từ chi tiết ren mang đến thiết kế vừa trẻ trung, vừa nữ tính.`,
     price: 1190000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -722,7 +705,6 @@ export const products = [
     description: `Quần 2 lớp dáng ống suông ngắn, cạp rời, khóa sườn, móc, túi dọc, túi ốp có nắp.`,
     price: 990000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },
@@ -745,7 +727,6 @@ export const products = [
     Thiết kế ôm vừa vặn từ trên xuống dưới tạo nên vẻ ngoài thanh thoát, gọn gàng và vô cùng thời thượng.`,
     price: 1290000,
     category: 'Quần',
-    subcategory: 'Quần kiểu',
     size: [
       { name: 'S', quantity: 5 },
       { name: 'M', quantity: 5 },

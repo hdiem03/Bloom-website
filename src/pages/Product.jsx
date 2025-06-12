@@ -7,7 +7,7 @@ import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const {productId} = useParams();
-  const {products,currency,addToCart,navigate,getProductPrice} = useContext(ShopContext);
+  const {products,currency,addToCart,navigate,getProductPrice,setShowCartSidebar} = useContext(ShopContext);
   const product = products.find(item => item.id === productId);
   if (!product) return <div>Sản phẩm không tồn tại.</div>
   const [selectedColor, setSelectedColor] = useState(product.color[0]);
@@ -93,7 +93,7 @@ const Product = () => {
                   setSelectedColor(c);
                   setImageByColor(c.image[0])}}
                 key={c.name}
-                className={`w-6 h-6 rounded-full border ${selectedColor.name === c.name ? 'outline outline-1 outline-offset-2' : ''}`}
+                className={`w-6 h-6 rounded-full border ${selectedColor.name === c.name ? 'outline outline-1 outline-offset-2' : 'border-gray-300'}`}
                 style={{backgroundColor: c.code}}
               >
 
@@ -139,7 +139,10 @@ const Product = () => {
           ) :(
             <div className='flex gap-4 my-8'>
               <button 
-                onClick={()=>addToCart(product.id,selectedSize.name,selectedColor.name,quantity)}
+                onClick={()=>{
+                  addToCart(product.id,selectedSize.name,selectedColor.name,quantity);
+                  setShowCartSidebar(true);
+                }}
                 className='w-48 h-14 px-8 bg-black text-white border border-black hover:bg-white hover:text-black'>
                 THÊM VÀO GIỎ
               </button>

@@ -17,7 +17,7 @@ const ShopContextProvider = (props) =>{
     productPrice: bestSeller ? Math.round(price * 0.5) : price,
     isDiscounted: bestSeller
   });
-    
+
   const addToCart = (id, size, color, quantity) => {
     const product = products.find(p => p.id === id);
     if (!product) return;
@@ -36,6 +36,7 @@ const ShopContextProvider = (props) =>{
     localStorage.setItem('cartItem', JSON.stringify(cartData));
     setCartItem(cartData);
   };
+
 
   
   
@@ -60,6 +61,8 @@ const ShopContextProvider = (props) =>{
     setCartItem(cartData);
 
   }
+
+
 
   
   const getCartAmount= () =>{
