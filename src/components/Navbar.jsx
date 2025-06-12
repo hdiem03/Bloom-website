@@ -60,10 +60,10 @@ const Navbar = () => {
                         )}
                     </div>
 
-                    <Link onClick={() => setShowCartSidebar(true)} className='relative'>
+                    <button onClick={() => setShowCartSidebar(true)} className='relative'>
                         <ShoppingBagIcon className='w-5 h-5'/>
                         <p className='absolute -top-3 -right-3 w-4 h-4 text-center bg-black text-white rounded-full text-[10px]'>{getCartCount()}</p>
-                    </Link>
+                    </button>
 
                 </div>
             </div>
