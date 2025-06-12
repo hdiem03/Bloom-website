@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import { Link } from 'react-router-dom';
-import { getProductPrice } from '../utils/utils';
 
 const ProductItem = ({id,name,price,color,bestSeller}) => {
-  const {currency} = useContext(ShopContext);
+  const {currency, getProductPrice} = useContext(ShopContext);
   const [selectedColor, setSelectedColor] = useState(color[0]);
   const [hover,setHover] = useState(false);
   const image = hover && selectedColor.image[1] ? selectedColor.image[1] : selectedColor.image[0];
@@ -20,6 +19,7 @@ const ProductItem = ({id,name,price,color,bestSeller}) => {
 
       </Link>
       <Link to={`/product/${id}`}  className='text-sm lg:text-base'>{name} </Link>
+
       <div className='flex items-center gap-2 my-2'>
         <p className='font-semibold'>{productPrice.toLocaleString('vi-VN')}{currency} </p>
         {isDiscounted && (

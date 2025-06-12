@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
-import { getProductPrice } from '../utils/utils';
 import Quantity from '../components/Quantity';
 import RelatedProduct from '../components/RelatedProduct';
 
 const Product = () => {
   const {productId} = useParams();
-  const {products,currency,addToCart,navigate} = useContext(ShopContext);
+  const {products,currency,addToCart,navigate,getProductPrice} = useContext(ShopContext);
   const product = products.find(item => item.id === productId);
   if (!product) return <div>Sản phẩm không tồn tại.</div>
   const [selectedColor, setSelectedColor] = useState(product.color[0]);
@@ -166,3 +165,4 @@ const Product = () => {
 }
 
 export default Product
+

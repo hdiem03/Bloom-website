@@ -13,10 +13,11 @@ const Navbar = () => {
                 <div>
                     <Bars3Icon className='cursor-pointer lg:hidden w-5 h-5'/>
                     <NavLink to='/collection' className={({isActive}) =>
-                        `hidden lg:inline-block text-sm font-semibold pb-2 border-b-2 ${isActive ? 'border-black' : 'border-transparent hover:border-black'}`
+                        `hidden lg:inline-block text-sm font-semibold pb-2 border-b-2 mr-3 ${isActive ? 'border-black' : 'border-transparent hover:border-black'}`
                     }>
                         TẤT CẢ SẢN PHẨM
                     </NavLink>
+
                 </div>
 
                 <div className='flex justify-center'>

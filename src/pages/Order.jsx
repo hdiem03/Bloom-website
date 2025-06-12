@@ -24,8 +24,8 @@ const Order = () => {
       </div>
       {orders.map(order => (
         <div key={order.id} className='grid grid-cols-[1fr_1fr_1.5fr_2fr_1fr] gap-4 py-6 border-b'>
-          <div>{order.id} </div>
-          <div>{order.date} </div>
+          <p>{order.id} </p>
+          <p>{order.date} </p>
           <div className='text-green-500'>{order.status} </div>
           {order.items.map((item,index) =>(
             <div key={index} className='flex gap-3'>
@@ -36,10 +36,10 @@ const Order = () => {
               </div>
             </div>
           ))}
-          <div className='text-right font-semibold'>
+          <p className='text-right font-semibold'>
             {order.total.toLocaleString('vi-VN')}{currency}
 
-          </div>
+          </p>
 
         </div>
         

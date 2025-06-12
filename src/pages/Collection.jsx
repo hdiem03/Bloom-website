@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import ProductItem from '../components/ProductItem';
-import { getProductPrice } from '../utils/utils';
 
 const Collection = () => {
-  const {products,search} = useContext(ShopContext);
+  const {products,search,getProductPrice} = useContext(ShopContext);
   const [filterProduct, setFilterProduct] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedSize, setSelectedSize] =useState([]);
@@ -64,9 +63,9 @@ const Collection = () => {
       productsCopy = productsCopy.filter(item => {
         const {productPrice} = getProductPrice(item.price,item.bestSeller);
         return selectedPrice.some(range =>(
-          (range === 'under-500' && productPrice < 500000) ||
-          (range === '500-1000' && productPrice >=500000 && productPrice <=1000000) ||
-          (range === 'above-1000' && productPrice >1000000)
+          (range === 'Dưới 500.000đ' && productPrice < 500000) ||
+          (range === '500.000đ - 1.000.000đ' && productPrice >=500000 && productPrice <= 1000000) ||
+          (range === 'Trên 1.000.000đ' && productPrice > 1000000)
         ))
       })
       
@@ -146,15 +145,16 @@ const Collection = () => {
         <hr className='border my-3'/>
         <p>Giá</p>
         <div className='flex flex-col gap-2 text-sm py-3'>
-          <label>
-            <input type="checkbox" value={'under-500'} className='w-4 h-4 mr-3' onChange={togglePrice} />Dưới 500.000đ
-          </label>
-          <label>
-            <input type="checkbox" value={'500-1000'} className='w-4 h-4 mr-3' onChange={togglePrice} />500.000đ - 1.000.000đ
-          </label>
-          <label>
-            <input type="checkbox" value={'above-1000'} className='w-4 h-4 mr-3' onChange={togglePrice} />Trên 1.000.000đ
-          </label>          
+          {
+            ['Dưới 500.000đ','500.000đ - 1.000.000đ','Trên 1.000.000đ'].map(p => (
+              <label key={p}>
+                <input type="checkbox" value={p} className='w-4 h-4 mr-3'
+                  onClick={togglePrice}
+                />
+                {p}
+              </label>
+            ))
+          }
         </div>
         <hr className='border my-3'/>
       </div>

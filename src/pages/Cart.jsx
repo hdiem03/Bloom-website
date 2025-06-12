@@ -1,13 +1,12 @@
 import React, { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
-import { getProductPrice } from '../utils/utils';
 import Quantity from '../components/Quantity';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import CartTotal from '../components/CartTotal';
 import { assets } from '../assets/assets';
 
 const Cart = () => {
-  const {products,getCartCount,cartItem,currency,updateQuantity,navigate} = useContext(ShopContext);
+  const {products,getCartCount,cartItem,currency,updateQuantity,navigate,getProductPrice} = useContext(ShopContext);
 
   return (
     <div>
@@ -22,10 +21,7 @@ const Cart = () => {
               <div className='text-right'>Tạm tính</div>
 
             </div>
-            {cartItem.map(item => {
-              const product = products.find(p => p.id === item.id);
-              const {isDiscounted} = getProductPrice(product.price,product.bestSeller);
-              return (
+            {cartItem.map(item => (
                 <div 
                   key={`${item.id}-${item.size}-${item.color}`}
                   className='grid grid-cols-[1fr_0.5fr_1fr_1px] lg:grid-cols-[2.5fr_1fr_1fr_1fr] border-y py-4'
@@ -40,7 +36,7 @@ const Cart = () => {
                   </div>
                   <div>
                     <p>{(item.productPrice).toLocaleString('vi-VN')}{currency} </p>
-                    {isDiscounted && (
+                    {item.isDiscounted && (
                       <p className='text-red-600 font-semibold text-sm'>(-50%)</p>
                     )}
                   </div>
@@ -61,7 +57,7 @@ const Cart = () => {
 
                 </div>
               )
-            })}
+            )}
 
           </div>
           <div className='lg:w-[450px]'>

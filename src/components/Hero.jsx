@@ -53,7 +53,6 @@ const Hero = () => {
       <button onClick={next}>
         <ChevronRightIcon className='absolute w-10 top-1/2 right-2 text-white'/>
       </button>
-
       
     </div>
   )

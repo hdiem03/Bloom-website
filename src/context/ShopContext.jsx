@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import { products } from "../assets/assets";
-import { getProductPrice } from "../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext();
@@ -13,12 +12,17 @@ const ShopContextProvider = (props) =>{
   const [showCartSidebar, setShowCartSidebar] = useState(false);
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+  
+  const getProductPrice = (price, bestSeller) => ({
+    productPrice: bestSeller ? Math.round(price * 0.5) : price,
+    isDiscounted: bestSeller
+  });
     
   const addToCart = (id, size, color, quantity) => {
     const product = products.find(p => p.id === id);
     if (!product) return;
 
-    const {productPrice} = getProductPrice(product.price,product.bestSeller);
+    const {productPrice,isDiscounted} = getProductPrice(product.price,product.bestSeller);
     const image = product.color.find(c => c.name === color).image[0];
     const cartData = [...cartItem];
     const existingItem = cartData.find(item => item.id === id && item.size === size && item.color === color);
@@ -26,7 +30,7 @@ const ShopContextProvider = (props) =>{
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
-      cartData.push({id, name: product.name,productPrice,size,color,image,quantity});
+      cartData.push({id, name: product.name,productPrice,size,color,image,quantity,isDiscounted});
     }
 
     localStorage.setItem('cartItem', JSON.stringify(cartData));
@@ -56,6 +60,7 @@ const ShopContextProvider = (props) =>{
     setCartItem(cartData);
 
   }
+
   
   const getCartAmount= () =>{
     let totalAmount = 0;
@@ -76,7 +81,7 @@ const ShopContextProvider = (props) =>{
     products, currency, delivery_fee,
     cartItem,setCartItem,
     addToCart, getCartCount,
-    updateQuantity, getCartAmount,
+    updateQuantity, getProductPrice, getCartAmount,
     getTotalPayment,
     showCartSidebar,setShowCartSidebar,
     search,setSearch,

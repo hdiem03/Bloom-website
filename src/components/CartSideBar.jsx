@@ -21,8 +21,8 @@ const CartSideBar = () => {
           cartItem.length === 0 ? (
             <p className='text-center pt-5'>Bạn chưa có sản phẩm nào trong giỏ hàng.</p>
           ) :(
-            cartItem.map(item => {
-              return(
+            cartItem.map(item => 
+              (
                 <div key={`${item.id}-${item.size}-${item.color}`}
                 className='flex gap-4 border-b py-4'>
                   <img src={item.image} alt="" className='w-24 h-32 object-cover' />
@@ -45,7 +45,7 @@ const CartSideBar = () => {
 
                 </div>
               )
-            })
+            )
           )}
 
         </div>

@@ -76,10 +76,11 @@ const PlaceOrder = () => {
           value={phone}
           onChange={e => setPhone(e.target.value)}
         />
+
+        <AddressSelect />
         <input type="text" placeholder='Địa chỉ' required
           className='border px-3 py-2'
         />
-        <AddressSelect />
         <input type="text" placeholder='Ghi chú'
           className='border px-3 py-2'
         />

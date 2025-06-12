@@ -20,3 +20,6 @@ const Quantity = ({qty, setQty}) => {
 }
 
 export default Quantity
+
+
+
